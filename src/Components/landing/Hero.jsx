@@ -31,7 +31,7 @@ export default function Hero() {
           <div className="hidden md:flex items-center justify-center">
             <div className="relative w-full aspect-square bg-gradient-to-br from-orange-200 to-green-100 rounded-3xl flex items-center justify-center">
               <img
-                src="/meal-planning-illustration.svg"
+                src="./meal-planning-illustration.svg"
                 alt="Meal planning"
                 className="w-full h-full object-cover rounded-3xl"
               />

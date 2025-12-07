@@ -2,8 +2,9 @@
 
 import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
-export default function SignIn({ onSwitchToSignUp }) {
+export default function SignIn({ onLoginSuccess }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -12,6 +13,7 @@ export default function SignIn({ onSwitchToSignUp }) {
   const [errors, setErrors] = useState({})
   const [showPassword, setShowPassword] = useState(false)
   const [touched, setTouched] = useState({})
+  const navigate = useNavigate()
 
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -74,8 +76,22 @@ export default function SignIn({ onSwitchToSignUp }) {
     setErrors(newErrors)
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Sign in successful:", formData)
-      alert("Signed in successfully!")
+      const userData = {
+        email: formData.email,
+        name: formData.email.split("@")[0],
+        password: formData.password  // Store password for frontend demo only
+      }
+
+      localStorage.setItem("userLoggedIn", "true")
+      localStorage.setItem("userData", JSON.stringify(userData))
+
+      // Notify parent component about successful login
+      if (onLoginSuccess) {
+        onLoginSuccess()
+      }
+      
+      // Redirect to dashboard
+      navigate("/dashboard")
     }
   }
 
@@ -172,7 +188,7 @@ export default function SignIn({ onSwitchToSignUp }) {
       {/* Switch to Sign Up */}
       <p className="text-center mt-6 text-gray-600">
         Don't have an account?{" "}
-        <button onClick={onSwitchToSignUp} className="text-green-600 hover:text-green-700 font-semibold">
+        <button onClick={() => navigate("/signup")} className="text-green-600 hover:text-green-700 font-semibold">
           Sign Up
         </button>
       </p>

@@ -6,7 +6,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="/Foodie-diet.svg" alt="Foodie Diet" className="h-8 w-8" />
+              <img src={import.meta.env.BASE_URL + 'Foodie-diet.svg'} alt="Foodie Diet" className="h-8 w-8" />
               <span className="font-bold text-white">Foodie Diet</span>
             </div>
             <p className="text-sm text-gray-400">Your personalized meal planning assistant.</p>

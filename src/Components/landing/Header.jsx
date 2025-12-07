@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Menu, X } from "lucide-react"
 // import "/src/styles/header.css"
+import Logo from "../../assets/Foodie-diet.svg"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,7 +13,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <img src="/Foodie-diet.svg" alt="Foodie Diet" className="h-10 w-10" />
+            <img src={Logo} alt="Foodie Diet" className="h-10 w-10" />
             <span className="text-xl font-bold text-green-700 hidden sm:inline">Foodie Diet</span>
           </Link>
 
