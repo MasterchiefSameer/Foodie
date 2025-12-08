@@ -11,6 +11,7 @@ import RecommendationSystem from "./RecommendationSystem"
 import UserProfile from "./UserProfile"
 import PhysicalStats from "./PhysicalStats"
 import GroceryList from "./GroceryList"
+import Ingredients from "./ingredients"
 import "./dashboard.css"
 import Bowl from "../../assets/icons8-healthy-food-100.png"
 import Broccoli from "../../assets/icons8-broccoli-100.png"
@@ -77,8 +78,8 @@ export default function Dashboard({ onLogout }) {
                   </div>
 
                   <div className="hidden sm:flex items-center gap-4">
-                    <img src={vegetables} alt="Vegetables" className="w-16 h-16 object-contain" />
-                    <img src={Broccoli} alt="Broccoli" className="w-28 h-28 object-contain" />
+                    <img src={vegetables || "/placeholder.svg"} alt="Vegetables" className="w-16 h-16 object-contain" />
+                    <img src={Broccoli || "/placeholder.svg"} alt="Broccoli" className="w-28 h-28 object-contain" />
                   </div>
                 </div>
 
@@ -116,10 +117,11 @@ export default function Dashboard({ onLogout }) {
                       <div className="relative">
                         <button
                           onClick={() => setShowDatePicker(!showDatePicker)}
-                          className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                          className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors min-w-[13rem] justify-center"
+                          aria-label="Select date"
                         >
                           <Calendar size={18} />
-                          <span className="font-medium">{formatDate(selectedDate)}</span>
+                          <span className="font-medium text-center truncate">{formatDate(selectedDate)}</span>
                         </button>
 
                         {showDatePicker && (
@@ -157,7 +159,7 @@ export default function Dashboard({ onLogout }) {
                   </div>
                   <div>
                     <NutritionTracker selectedMealNutrition={selectedMealNutrition} />
-                    <img src={Bowl} alt="Food Bowl" className="w-32 h-32 mx-auto mt-4" />
+                    <img src={Bowl || "/placeholder.svg"} alt="Food Bowl" className="w-32 h-32 mx-auto mt-4" />
                   </div>
                 </div>
 
@@ -178,14 +180,16 @@ export default function Dashboard({ onLogout }) {
                 <h1 className="text-3xl font-bold text-gray-900 mb-6">Nutrition Tracker</h1>
                 <NutritionTracker selectedMealNutrition={selectedMealNutrition} />
                 <div className="mt-6 flex justify-center">
-                      <img src={Bowl} alt="Healthy Food Bowl" className="w-32 h-32    " />
-                    </div>
+                  <img src={Bowl || "/placeholder.svg"} alt="Healthy Food Bowl" className="w-32 h-32" />
+                </div>
               </div>
             )}
 
             {activePage === "physicalstats" && <PhysicalStats />}
 
             {activePage === "grocery" && <GroceryList />}
+
+            {activePage === "ingredients" && <Ingredients />}
 
             {activePage === "profile" && <UserProfile setActivePage={setActivePage} />}
           </div>

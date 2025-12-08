@@ -1,6 +1,6 @@
 "use client"
 
-import { Home, Calendar, ShoppingCart, User, LogOut, X, Activity } from "lucide-react"
+import { Home, Calendar, ShoppingCart, User, LogOut, X, Activity, Leaf } from "lucide-react"
 
 export default function DashboardSidebar({ activePage, setActivePage, sidebarOpen, setSidebarOpen, onLogout }) {
   const menuItems = [
@@ -8,6 +8,7 @@ export default function DashboardSidebar({ activePage, setActivePage, sidebarOpe
     { id: "meals", label: "Meals", icon: Calendar },
     { id: "nutrition", label: "Nutrition", icon: ShoppingCart },
     { id: "physicalstats", label: "Physical Stats", icon: Activity },
+    { id: "ingredients", label: "Ingredients", icon: Leaf },
     { id: "grocery", label: "Grocery List", icon: ShoppingCart },
     { id: "profile", label: "Profile", icon: User },
   ]

@@ -1,11 +1,13 @@
 "use client"
 
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function DietPreferences() {
   const [selectedDiet, setSelectedDiet] = useState("anything")
   const [calories, setCalories] = useState(1800)
   const [meals, setMeals] = useState(3)
+  const navigate = useNavigate()
 
   const diets = [
     { id: "anything", label: "Anything", icon: "🌮" },
@@ -15,6 +17,10 @@ export default function DietPreferences() {
     { id: "vegan", label: "Vegan", icon: "❤️" },
     { id: "vegetarian", label: "Vegetarian", icon: "🥦" },
   ]
+
+  const handleGenerateMealPlan = () => {
+    navigate("/signup")
+  }
 
   return (
     <section id="diet" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-green-50">
@@ -103,7 +109,7 @@ export default function DietPreferences() {
 
         {/* Generate Button */}
         <div className="text-center">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-12 py-3 rounded-lg font-semibold transition">
+          <button onClick={handleGenerateMealPlan} className="bg-orange-500 hover:bg-orange-600 text-white px-12 py-3 rounded-lg font-semibold transition">
             Generate
           </button>
         </div>
